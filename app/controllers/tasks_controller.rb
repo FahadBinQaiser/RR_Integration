@@ -1,13 +1,14 @@
-class TaskController < ApplicationController
+class TasksController < ApplicationController
     def index 
         @tasks = Task.all
+        render json: @tasks, status: :ok
     end
     def create 
         @task = Task.new(task_params)
-        if task.save
+        if @task.save
             render json: @task, status: :created
         else
-            render json: { errors: @task.error.full_messages }, status: :unprocessable_entity 
+            render json: { errors: @task.errors.full_messages }, status: :unprocessable_entity 
         end
     end
     private 
