@@ -9,7 +9,11 @@ function App() {
     const urlFetch = async () => {
       try {
         const res = await fetch("http://localhost:3000/tasks");
+        if (!res.ok) {
+          throw new Error("Failed to fetch tasks");
+        }
         const data = await res.json();
+
         setTasks(data);
         setLoading(false);
       } catch (err) {
