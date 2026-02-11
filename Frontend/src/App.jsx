@@ -20,4 +20,17 @@ function App() {
 
     urlFetch();
   }, []);
+
+  return (
+    <div className="api">
+      {!loading &&
+        !error &&
+        tasks.length > 0 &&
+        tasks.map((task) => {
+          <div key={task.id}>
+            <h1>{task.title}</h1>
+          </div>;
+        })}
+    </div>
+  );
 }
