@@ -27,6 +27,9 @@ function App() {
 
   return (
     <div className="api">
+      {loading && <p>Loading tasks...</p>}
+      {error && <p>Error: {error}</p>}
+
       {!loading &&
         !error &&
         tasks.length > 0 &&
