@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+
 function App() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const urlFetch = async () => {
@@ -10,8 +12,9 @@ function App() {
         const data = await res.json();
         setTasks(data);
         setLoading(false);
-      } catch (error) {
-        console.log("Failed fetching", error);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
       }
     };
 
