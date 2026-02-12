@@ -37,6 +37,9 @@ function TaskList() {
 
   if (loading) return <p>Loading tasks...</p>;
   if (error) return <p>Error: {error}</p>;
+  if (!loading && !error && tasks.length === 0) {
+    return <p>No tasks found.</p>;
+  }
 
   return (
     <div className="api">
