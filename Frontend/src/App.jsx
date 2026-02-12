@@ -1,44 +1,7 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import TaskList from "./components/TasksList";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const urlFetch = async () => {
-      try {
-        const res = await fetch("http://localhost:3000/tasks");
-        if (!res.ok) {
-          throw new Error("Failed to fetch tasks");
-        }
-        const data = await res.json();
-
-        setTasks(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-
-    urlFetch();
-  }, []);
-
-  return (
-    <div className="api">
-      {loading && <p>Loading tasks...</p>}
-      {error && <p>Error: {error}</p>}
-
-      {!loading &&
-        !error &&
-        tasks.length > 0 &&
-        tasks.map((task) => (
-          <div key={task.id}>
-            <h1>{task.title}</h1>
-          </div>
-        ))}
-    </div>
-  );
+  return <TaskList />;
 }
 export default App;
