@@ -7,3 +7,5 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Task.create!(title: "hello", completed: true)
+Task.create!(title: "Learning Integration Rails and React only API", completed: false)
